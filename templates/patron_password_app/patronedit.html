@@ -108,6 +108,7 @@
 
 
     <input class="btn btn-success bigpushbutton editpatron_section" type="submit" value="Update">
+    <a href="{% url 'patron_password_app:patron_delete' patron.pk %}"><button type="button" class="btn btn-danger delete_button bigpushbutton pull-right" name="button">Delete</button></a>
 </form>
 
 

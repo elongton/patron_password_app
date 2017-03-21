@@ -9,6 +9,12 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 @login_required
+def patron_delete(request, patron_number):
+    patron = Patron.objects.get(pk=patron_number)
+    patron.delete()
+    return HttpResponseRedirect(reverse('patron_password_app:search'))
+
+@login_required
 def search(request):
     searchform = SearchForm()
     searchresults = None
@@ -32,13 +38,11 @@ def search(request):
                                 if fname == patron.first_name or lname == patron.last_name
                                 or cardnumber == patron.library_card_number]
             else:
-                searchresults = Patron.objects.all()
+                searchresults = Patron.objects.all().order_by('pk').reverse()
 
             print(searchresults)
 
     return render(request, 'patron_password_app/search.html', {'searchform':searchform, 'searchresults':searchresults})
-
-
 @login_required
 def patron_view(request, patron_number):
     patron = Patron.objects.get(pk=patron_number)
@@ -138,7 +142,6 @@ def patron_edit(request, patron_number):
 
     context = {'editform': edit_form,'updated': updated, 'patron': patron}
     return render(request, 'patron_password_app/patronedit.html', context)
-
 @login_required
 def patron_add(request):
     if request.method == "POST":
@@ -149,28 +152,37 @@ def patron_add(request):
         other_form =    OtherForm(data=request.POST)
 
         if patron_form.is_valid() and google_form.is_valid() and yahoo_form.is_valid() and hotmail_form.is_valid() and other_form.is_valid():
+            superDict = dict(request.POST.lists())
+            patron_form = patron_form.save()
 
-            print('hello poppet')
+            if (superDict['username'][0] != "") or (superDict['password'][0] != ""):
+                google_form = google_form.save(commit=False)
+                google_form.patron= patron_form
+                google_form.username = superDict['username'][0]
+                google_form.password = superDict['password'][0]
+                google_form.save()
 
+            if (superDict['username'][1] != "") or (superDict['password'][1] != ""):
+                yahoo_form = yahoo_form.save(commit=False)
+                yahoo_form.patron= patron_form
+                yahoo_form.username = superDict['username'][1]
+                yahoo_form.password = superDict['password'][1]
+                yahoo_form.save()
 
-            # patron_form = patron_form.save()
-            #
-            # google_form = google_form.save(commit=False)
-            # google_form.patron= patron_form
-            #
-            # if 'username' in request.POST:
-            #     google_form.username = request.FILES['username']
-            #
-            # google_form.save()
+            if (superDict['username'][2] != "") or (superDict['password'][2] != ""):
+                hotmail_form = hotmail_form.save(commit=False)
+                hotmail_form.patron= patron_form
+                hotmail_form.username = superDict['username'][2]
+                hotmail_form.password = superDict['password'][2]
+                hotmail_form.save()
 
-
-            # print('worked')
-            # multiFormHandler(patron_form, yahoo_form)
-            # print('worked')
-            # multiFormHandler(patron_form, hotmail_form)
-            # print('worked')
-            # multiFormHandler(patron_form, other_form)
-            # print('worked')
+            if (superDict['username'][3] != "") or (superDict['password'][3] != "") or (superDict['service'][0] != ""):
+                other_form = other_form.save(commit=False)
+                other_form.patron= patron_form
+                other_form.username = superDict['service'][0]
+                other_form.username = superDict['username'][3]
+                other_form.password = superDict['password'][3]
+                other_form.save()
 
             return HttpResponseRedirect(reverse('patron_password_app:search'))
         else:

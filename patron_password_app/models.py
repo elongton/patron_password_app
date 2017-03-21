@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Patron(models.Model):
-    first_name = models.CharField(max_length=264, blank=True)
-    last_name = models.CharField(max_length=264, blank=True)
-    library_card_number = models.CharField(max_length=13, blank=True)
+    first_name = models.CharField(max_length=264, blank=False)
+    last_name = models.CharField(max_length=264, blank=False)
+    library_card_number = models.CharField(max_length=13, blank=False)
     phone_number = models.CharField(max_length=24, blank=True)
 
     def __str__(self):
