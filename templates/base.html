@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/basestyle.css"%}"/>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'index' %}">RPL LOGO</a></li>
+      {% if user.is_authenticated %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class=""><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      {% else %}
+        <li class=""><a class="navbar-link" href="{% url 'register' %}">Staff Registration</a></li>
+        </ul>
+          <form class="navbar-form navbar-right" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="username" value="" placeholder="Username">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+
+            <input style = "display: none" type="submit" name="" value="login">
+          </form>
+
+      {% endif %}
+      </div><!-- container -->
+
+      </div>
+    </nav>
+
+    {% block update_block %}
+    {% endblock %}
+
+    <div class="container">
+
+      {% block body_block %}
+      <!-- Anything outside of this will be inherited if you extend! -->
+      {% endblock %}
+
+
+    </div><!-- container -->
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'patron_password_app:patron_add' %}"><div class="table_parent" id="addpatron_button"><div class="table_child">+</div></div></a>
+    {% endif %}
+
+  </body>
+</html>

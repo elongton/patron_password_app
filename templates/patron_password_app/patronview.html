@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block body_block%}
+
+<div class="jumbotron patronview_jumbo">
+  <h1>{{ patron.first_name }} {{ patron.last_name }}</h1>
+  <h4 class="patron_nav"><a href="{% url 'patron_password_app:search' %}">Back to Search</a></h4>
+</div>
+
+<div class="patronview_patroninfo">
+  <h3>Library Card #: {{ patron.library_card_number }}</h3>
+  <h3>Phone Number #: {{ patron.phone_number }}</h3>
+</div><!-- patronview_patroninfo -->
+
+
+{% if ga %}
+<div class="patronview_googleinfo patron_view_accountinfo">
+  <h2><u>Google Account</u></h2>
+  <h3>Username: {{ga.username}}</h3>
+  <h3>Password: {{ga.password}}</h3>
+</div><!-- patronview_googleinfo -->
+{% endif %}
+{% if ya %}
+<div class="patronview_yahooinfo patron_view_accountinfo">
+  <h2><u>Yahoo Account</u></h2>
+  <h3>Username: {{ya.username}}</h3>
+  <h3>Password: {{ya.password}}</h3>
+</div><!-- patronview_googleinfo -->
+{% endif %}
+{% if ha %}
+<div class="patronview_hotmailinfo patron_view_accountinfo">
+  <h2><u>Hotmail Account</u></h2>
+  <h3>Username: {{ha.username}}</h3>
+  <h3>Password: {{ha.password}}</h3>
+</div><!-- patronview_googleinfo -->
+{% endif %}
+{% if oa %}
+<div class="patronview_otherinfo patron_view_accountinfo">
+  <h2><u>Other Account</u></h2>
+  <h3>Service: {{oa.service}}</h3>
+  <h3>Username: {{oa.username}}</h3>
+  <h3>Password: {{oa.password}}</h3>
+</div><!-- patronview_googleinfo -->
+{% endif %}
+
+
+<a href="{% url 'patron_password_app:patron_edit' patron_number %}"><button class="btn btn-success patron_view_accountinfo bigpushbutton" type="button" name="button">Edit</button></a>
+
+
+
+
+{% endblock %}

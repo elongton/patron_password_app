@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+
+
+{% block body_block%}
+
+<div class="jumbotron">
+  <h1>Add Patron.</h1>
+  <h4 class="patron_nav"><a href="{% url 'patron_password_app:search' %}">Back to Search</a></h4>
+</div>
+
+<form method="post"> <!--multipart/form-data is important if you want to upload images -->
+  {% csrf_token %}
+    <section class="editpatron_patroninfo editpatron_section">
+      <div class="row patronedit_row">
+        <div class="col-sm-12">
+          <u><h3>Patron Info</h3></u>
+        </div>
+      </div>
+      <div class="row patronedit_row">
+        <div class="col-sm-6">
+          {{ patron_form.first_name|add_class:"form-control"|attr:"placeholder:First Name"}}
+        </div>
+        <div class="col-sm-6 right_field">
+          {{ patron_form.last_name|add_class:"form-control"|attr:"placeholder:Last Name"}}
+        </div>
+      </div> <!-- row -->
+      <div class="row patronedit_row">
+        <div class="col-sm-6">
+          {{ patron_form.library_card_number|add_class:"form-control"|attr:"placeholder:Library Card Number"}}
+        </div>
+        <div class="col-sm-6 right_field">
+          {{ patron_form.phone_number|add_class:"form-control"|attr:"placeholder:Phone Number"}}
+        </div>
+      </div> <!-- row -->
+    </section><!-- editpatron_patroninfo -->
+
+    <section class="editpatron_emailaccounts editpatron_section">
+      <div class="row patronedit_row">
+        <div class="col-sm-12">
+          <u><h3>Email Accounts</h3></u>
+        </div>
+      </div>
+
+      <div class="row patronedit_row">
+        <div class="col-sm-12"><u><h4>Google</h4></u></div>
+      </div>
+      <div class="row patronedit_row">
+        <div class="col-sm-6">
+          {{ editform.gusername|add_class:"form-control"|attr:"placeholder:Username" }}
+        </div>
+        <div class="col-sm-6 right_field">
+          {{ editform.gpassword|add_class:"form-control"|attr:"placeholder:Password" }}
+        </div>
+      </div> <!-- row -->
+
+      <div class="row patronedit_row">
+        <div class="col-sm-12"><u><h4>Yahoo</h4></u></div>
+      </div>
+      <div class="row patronedit_row">
+        <div class="col-sm-6">
+          {{ editform.yusername|add_class:"form-control"|attr:"placeholder:UserName" }}
+        </div>
+        <div class="col-sm-6 right_field">
+          {{ editform.ypassword|add_class:"form-control"|attr:"placeholder:Password" }}
+        </div>
+      </div> <!-- row -->
+
+      <div class="row patronedit_row">
+        <div class="col-sm-12"><u><h4>Hotmail</h4></u></div>
+      </div>
+      <div class="row patronedit_row">
+        <div class="col-sm-6">
+          {{ editform.husername|add_class:"form-control"|attr:"placeholder:Username" }}
+        </div>
+        <div class="col-sm-6 right_field">
+          {{ editform.hpassword|add_class:"form-control"|attr:"placeholder:Password" }}
+        </div>
+      </div> <!-- row -->
+
+      <div class="row patronedit_row">
+        <div class="col-sm-12"><u><h4>Other Account</h4></u></div>
+      </div>
+      <div class="row patronedit_row">
+        <div class="col-sm-4">
+          {{ editform.oservice|add_class:"form-control"|attr:"placeholder:Service" }}
+        </div>
+        <div class="col-sm-4 right_field">
+          {{ editform.ousername|add_class:"form-control"|attr:"placeholder:Username" }}
+        </div>
+        <div class="col-sm-4 right_field">
+          {{ editform.opassword|add_class:"form-control"|attr:"placeholder:Password" }}
+        </div>
+      </div> <!-- row -->
+
+    </section><!-- editpatron_emailaccounts -->
+
+
+
+    <input class="btn btn-success bigpushbutton editpatron_section" type="submit" value="Submit">
+</form>
+
+{% endblock %}

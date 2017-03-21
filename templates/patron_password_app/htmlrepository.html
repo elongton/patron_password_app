@@ -1,0 +1,49 @@
+<section class="editpatron_emailaccounts editpatron_section">
+  <div class="row">
+    <div class="col-sm-12">
+      <u><h3>Email Accounts</h3></u>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12"><u><h4>Google</h4></u></div>
+    <div class="col-sm-6">
+      {{ google_form.username|add_class:"form-control"|attr:"placeholder:UserName" }}
+    </div>
+    <div class="col-sm-6">
+      {{ google_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
+    </div>
+  </div> <!-- row -->
+  <div class="row">
+    <div class="col-sm-12"><u><h4>Yahoo</h4></u></div>
+    <div class="col-sm-6">
+      {{ yahoo_form.username|add_class:"form-control"|attr:"placeholder:UserName" }}
+    </div>
+    <div class="col-sm-6">
+      {{ yahoo_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
+    </div>
+  </div> <!-- row -->
+
+  <div class="row">
+    <div class="col-sm-12"><u><h4>Hotmail</h4></u></div>
+    <div class="col-sm-6">
+      {{ hotmail_form.username|add_class:"form-control"|attr:"placeholder:UserName" }}
+    </div>
+    <div class="col-sm-6">
+      {{ hotmail_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
+    </div>
+  </div> <!-- row -->
+
+  <div class="row">
+    <div class="col-sm-12"><u><h4>Other Account</h4></u></div>
+    <div class="col-sm-4">
+      {{ other_form.service|add_class:"form-control"|attr:"placeholder:Service" }}
+    </div>
+    <div class="col-sm-4">
+      {{ other_form.username|add_class:"form-control"|attr:"placeholder:Username" }}
+    </div>
+    <div class="col-sm-4">
+      {{ other_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
+    </div>
+  </div> <!-- row -->
+
+</section><!-- editpatron_emailaccounts -->
