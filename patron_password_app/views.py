@@ -34,10 +34,10 @@ def search(request):
             else:
                 searchresults = Patron.objects.all()
 
-
             print(searchresults)
 
     return render(request, 'patron_password_app/search.html', {'searchform':searchform, 'searchresults':searchresults})
+
 
 @login_required
 def patron_view(request, patron_number):
@@ -66,7 +66,6 @@ def patron_view(request, patron_number):
                'oa': oa,
                'patron_number': patron_number}
     return render(request, 'patron_password_app/patronview.html', context)
-
 @login_required
 def patron_edit(request, patron_number):
     updated = False
@@ -148,21 +147,42 @@ def patron_add(request):
         yahoo_form =    YahooForm(data=request.POST)
         hotmail_form =  HotmailForm(data=request.POST)
         other_form =    OtherForm(data=request.POST)
+
         if patron_form.is_valid() and google_form.is_valid() and yahoo_form.is_valid() and hotmail_form.is_valid() and other_form.is_valid():
-            patron_form = patron_form.save()
-            google_form = google_form.save()
-            yahoo_form  = yahoo_form.save()
-            hotmail_form = hotmail_form.save()
-            other_form = other_form.save()
+
+            print('hello poppet')
+
+
+            # patron_form = patron_form.save()
+            #
+            # google_form = google_form.save(commit=False)
+            # google_form.patron= patron_form
+            #
+            # if 'username' in request.POST:
+            #     google_form.username = request.FILES['username']
+            #
+            # google_form.save()
+
+
+            # print('worked')
+            # multiFormHandler(patron_form, yahoo_form)
+            # print('worked')
+            # multiFormHandler(patron_form, hotmail_form)
+            # print('worked')
+            # multiFormHandler(patron_form, other_form)
+            # print('worked')
+
+            return HttpResponseRedirect(reverse('patron_password_app:search'))
         else:
+            print('hello')
             print(patron_form.errors, google_form.errors, yahoo_form.errors, hotmail_form.errors, other_form.errors)
 
     else:
-        patron_form =   PatronForm()
-        google_form = GoogleForm()
-        yahoo_form =    YahooForm()
-        hotmail_form = HotmailForm()
-        other_form = OtherForm()
+        patron_form     =       PatronForm()
+        google_form     =       GoogleForm()
+        yahoo_form      =       YahooForm()
+        hotmail_form    =       HotmailForm()
+        other_form      =       OtherForm()
     context = {'patron_form': patron_form,
                'google_form': google_form,
                'yahoo_form': yahoo_form,
@@ -174,7 +194,6 @@ def patron_add(request):
 
 def stripit(stringname):
     return stringname.replace(" ","")
-
 def checkForUpdate(Model, patron, handler, username, password, **keyword_parameters):
     if ('service' in keyword_parameters):
         service = keyword_parameters['service']
@@ -194,3 +213,7 @@ def checkForUpdate(Model, patron, handler, username, password, **keyword_paramet
             Model.objects.get_or_create(patron = patron, username = username, password = password, service = keyword_parameters['service'])
         else:
             Model.objects.get_or_create(patron = patron, username = username, password = password)
+def multiFormHandler(patron_form, account_form):
+    account_form = account_form.save(commit=False)
+    account_form.patron= patron_form
+    account_form.save()

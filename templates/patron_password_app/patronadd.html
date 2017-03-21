@@ -11,7 +11,7 @@
   <h4 class="patron_nav"><a href="{% url 'patron_password_app:search' %}">Back to Search</a></h4>
 </div>
 
-<form method="post"> <!--multipart/form-data is important if you want to upload images -->
+<form method="post">
   {% csrf_token %}
     <section class="editpatron_patroninfo editpatron_section">
       <div class="row patronedit_row">
@@ -49,10 +49,10 @@
       </div>
       <div class="row patronedit_row">
         <div class="col-sm-6">
-          {{ editform.gusername|add_class:"form-control"|attr:"placeholder:Username" }}
+          {{ google_form.username|add_class:"form-control"|attr:"placeholder:Username" }}
         </div>
         <div class="col-sm-6 right_field">
-          {{ editform.gpassword|add_class:"form-control"|attr:"placeholder:Password" }}
+          {{ google_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
         </div>
       </div> <!-- row -->
 
@@ -61,10 +61,10 @@
       </div>
       <div class="row patronedit_row">
         <div class="col-sm-6">
-          {{ editform.yusername|add_class:"form-control"|attr:"placeholder:UserName" }}
+          {{ yahoo_form.username|add_class:"form-control"|attr:"placeholder:UserName" }}
         </div>
         <div class="col-sm-6 right_field">
-          {{ editform.ypassword|add_class:"form-control"|attr:"placeholder:Password" }}
+          {{ yahoo_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
         </div>
       </div> <!-- row -->
 
@@ -73,10 +73,10 @@
       </div>
       <div class="row patronedit_row">
         <div class="col-sm-6">
-          {{ editform.husername|add_class:"form-control"|attr:"placeholder:Username" }}
+          {{ hotmail_form.username|add_class:"form-control"|attr:"placeholder:Username" }}
         </div>
         <div class="col-sm-6 right_field">
-          {{ editform.hpassword|add_class:"form-control"|attr:"placeholder:Password" }}
+          {{ hotmail_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
         </div>
       </div> <!-- row -->
 
@@ -85,13 +85,13 @@
       </div>
       <div class="row patronedit_row">
         <div class="col-sm-4">
-          {{ editform.oservice|add_class:"form-control"|attr:"placeholder:Service" }}
+          {{ other_form.service|add_class:"form-control"|attr:"placeholder:Service" }}
         </div>
         <div class="col-sm-4 right_field">
-          {{ editform.ousername|add_class:"form-control"|attr:"placeholder:Username" }}
+          {{ other_form.username|add_class:"form-control"|attr:"placeholder:Username" }}
         </div>
         <div class="col-sm-4 right_field">
-          {{ editform.opassword|add_class:"form-control"|attr:"placeholder:Password" }}
+          {{ other_form.password|add_class:"form-control"|attr:"placeholder:Password" }}
         </div>
       </div> <!-- row -->
 

@@ -32,19 +32,19 @@ class PatronForm(forms.ModelForm):
 class GoogleForm(forms.ModelForm):
     class Meta():
         model = GoogleAccount
-        fields = ('__all__')
+        fields = ('username', 'password')
 
 class YahooForm(forms.ModelForm):
     class Meta():
         model = YahooAccount
-        fields = ('__all__')
+        fields = ('username', 'password')
 
 class HotmailForm(forms.ModelForm):
     class Meta():
         model = HotmailAccount
-        fields = ('__all__')
+        fields = ('username', 'password')
 
 class OtherForm(forms.ModelForm):
     class Meta():
         model = OtherAccount
-        fields = ('__all__')
+        fields = ('username', 'password', 'service')
