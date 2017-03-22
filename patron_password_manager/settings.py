@@ -135,6 +135,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
 
-
 #LOGIN
 LOGIN_URL = '/users_app/user_login'

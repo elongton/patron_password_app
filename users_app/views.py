@@ -37,6 +37,7 @@ def register(request):
             print(user_form.cleaned_data)
             user = user_form.save()
             user.set_password(user.password)
+            user.is_active = False
             user.save()
             # user.set_password(user.password)
             registered = True

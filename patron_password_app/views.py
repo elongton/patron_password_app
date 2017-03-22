@@ -39,10 +39,11 @@ def search(request):
                                 or cardnumber == patron.library_card_number]
             else:
                 searchresults = Patron.objects.all().order_by('pk').reverse()
-
-            print(searchresults)
+    else:
+        searchresults = Patron.objects.all().order_by('pk').reverse()
 
     return render(request, 'patron_password_app/search.html', {'searchform':searchform, 'searchresults':searchresults})
+
 @login_required
 def patron_view(request, patron_number):
     patron = Patron.objects.get(pk=patron_number)
@@ -140,7 +141,7 @@ def patron_edit(request, patron_number):
             populated_fields.update({'oservice': oa.service, 'ousername': oa.username, 'opassword': oa.password})
         edit_form =   EditForm(populated_fields)
 
-    context = {'editform': edit_form,'updated': updated, 'patron': patron}
+    context = {'editform': edit_form,'updated': updated, 'patron': patron, 'editpage': True}
     return render(request, 'patron_password_app/patronedit.html', context)
 @login_required
 def patron_add(request):

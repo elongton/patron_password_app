@@ -1,0 +1,138 @@
+/* ==============================*/
+/*            MIXINS             */
+/*===============================*/
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
+
+
+/* ==============================*/
+/*        DEVELOPMENT            */
+/*===============================*/
+
+.center{text-align: center;}
+.left{text-align: left;}
+.rightalign{text-align: right;}
+
+
+.absolute{position: absolute;}
+.empty{height: 350px;}
+.fullheight{height: 100%;}
+.short{height: 80px;}
+.min_short{min-height: 100px;}
+.short_mid{height: 200px;}
+.medium{height: 300px;}
+.min_medium{min-height: 200px;}
+.dashed{border: 1px dashed black;}
+.dashedwhite{border: 1px dashed white;}
+.dashedred{border: 3px dashed red;}
+.solid{border: 1px solid black;}
+.solidred{border: 3px solid red;}
+.raleway{font-family: Raleway; 	-webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;}
+.libre{font-family:'Libre Franklin', sans-serif; font-style: italic;}
+
+.vertical_align{position: relative; top:50%; transform: translateY(-50%);}
+.table_parent{display: table}
+.table_child{display: table-cell; vertical-align: middle;}
+
+
+/* ==============================*/
+/*           GENERAL             */
+/*===============================*/
+
+/*--sassy --*/
+
+$buttonwidth: 125px;
+$buttonheight: 65px;
+$nicebluecolor: #4285f4;
+
+#rpl_brand{height: 100%;}
+.navbar-brand{padding:5px!important;}
+#addpatron_button{width: $buttonwidth; height: $buttonheight;
+                  background-color: $nicebluecolor; color: white;
+                  text-align: center;
+                  @include border-radius(5px);
+                  font-size: 20px;
+                  position: fixed;
+                  bottom: 20px;}
+@media(min-width: 1200px){#addpatron_button{left: 50%; transform: translateX(600px - $buttonwidth);}}
+@media(max-width: 1200px){#addpatron_button{left: 50%; transform: translateX(480px - $buttonwidth);}}
+@media(max-width: 992px){#addpatron_button{left: 50%; transform: translateX(380px - $buttonwidth);}}
+@media(max-width: 768px){#addpatron_button{left: 50%; transform: translateX(-50%);}}
+
+.delete_button{margin-right: 75px; margin-top: 15px;}
+@media(max-width: 768px){
+.delete_button{margin-right: 15px;}
+}
+
+.patron_nav{padding-left: 5px;}
+@media(max-width: 768px){
+.patron_nav{padding-left: 0px;}
+}
+.bigpushbutton{width: 150px; height: 50px; margin-bottom: 100px;}
+/* ==============================*/
+/*            BODY               */
+/*===============================*/
+
+.navbar{margin-bottom: 0;}
+.signup_row{margin-bottom: 15px;}
+@media(max-width:768px){
+  .sm_bottom_input{margin-top: 15px;}
+}
+.error_text{color: red;}
+.jumbotron{margin-top: 25px;}
+
+@media(max-width: 768px){
+  .navbar-nav{text-align: center;}
+  .navbar-form{border-top: 0px; margin-bottom: 0; border-bottom: 0; margin-top: 0; padding-top: 0;}
+  #navbar_username{margin-bottom: 10px;}
+  #navbar_li{height: 75px;}
+  #navbar_li a{height: 100%; position: absolute; left: 50%; transform: translateX(-50%);}
+  // .navbar-brand{position: absolute; left: 50%; transform: translateX(-50%);}
+  // #registration_li{width: 50%;}
+}
+
+/* ==============================*/
+/*      Search Form Template     */
+/*===============================*/
+div.searchresults_div{margin-top: 15px; margin-bottom: 35px + $buttonheight;}
+table.search_table, table.search_table td{border: 2px solid #D3D3D3;}
+table.search_table td{padding-left: 10px;}
+td.edit_search_col{text-align: center;}
+
+
+/* ==============================*/
+/*      Patron View Template     */
+/*===============================*/
+
+/*div.patronview_patroninfo {background-color: #bdbdbd;}*/
+
+.patron_view_accountinfo h2{font-size: 27px;}
+.patronview_patroninfo, .patron_view_accountinfo{margin-left: 75px;}
+.patron_view_accountinfo{margin-top: 25px;}
+div.patronview_googleinfo{}
+@media(max-width: 768px){
+div.patronview_patroninfo, .patron_view_accountinfo{margin-left: 15px;}
+}
+/*.patronview_jumbo{padding-left: 20px!important; }*/
+
+/* ==============================*/
+/*      Patron Edit Template     */
+/*===============================*/
+
+.editpatron_section{margin-left: 75px; margin-right: 75px; margin-top: 15px;}
+.updated{height: 50px; width: 100%; background-color: #5cb85c; color: black;}
+/*.updated a{color: white;}*/
+.patronedit_row h1,.patronedit_row h2,.patronedit_row h3,.patronedit_row h4{margin-top: 0; margin-bottom: 0;}
+.patronedit_row{margin-bottom: 10px;}
+@media(max-width: 768px){
+  .editpatron_section{margin-left: 15px; margin-right: 15px;}
+  .right_field{margin-top: 15px;}
+}
