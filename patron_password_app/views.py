@@ -200,7 +200,8 @@ def patron_add(request):
                'google_form': google_form,
                'yahoo_form': yahoo_form,
                'hotmail_form': hotmail_form,
-               'other_form': other_form,}
+               'other_form': other_form,
+               'editpage': True}
     return render(request, 'patron_password_app/patronadd.html', context)
 
 

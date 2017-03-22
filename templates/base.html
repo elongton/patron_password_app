@@ -5,7 +5,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RPL Patrons</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "css/basestyle.css"%}"/>
@@ -20,17 +21,17 @@
       {% if user.is_authenticated %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class=""><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+          <li class="single_menu_link"><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
       {% else %}
-        <li id="registration_li"><a class="navbar-link" href="{% url 'register' %}">Staff Registration</a></li>
+        <li class="single_menu_link"><a class="navbar-link" href="{% url 'register' %}">Staff Registration</a></li>
         </ul>
           <form class="navbar-form navbar-right" action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <input id = "navbar_username" class="form-control" type="text" name="username" value="" placeholder="Username">
             <input id = "navbar_password" class="form-control" type="password" name="password" placeholder="Password">
 
-            <input style = "display: none" type="submit" name="" value="login">
+            <input style = "position: fixed; height: 0; width: 0; visibility: hidden;" type="submit" name="" value="login">
           </form>
 
       {% endif %}

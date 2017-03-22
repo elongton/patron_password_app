@@ -52,6 +52,10 @@
 $buttonwidth: 125px;
 $buttonheight: 65px;
 $nicebluecolor: #4285f4;
+$lighterniceblue: #42a3f4;
+
+.btn-success{background-color: $nicebluecolor; border: none;}
+.btn-success:hover{background-color: $lighterniceblue;}
 
 #rpl_brand{height: 100%;}
 .navbar-brand{padding:5px!important;}
@@ -62,6 +66,7 @@ $nicebluecolor: #4285f4;
                   font-size: 20px;
                   position: fixed;
                   bottom: 20px;}
+#addpatron_button:hover{background-color: $lighterniceblue;}
 @media(min-width: 1200px){#addpatron_button{left: 50%; transform: translateX(600px - $buttonwidth);}}
 @media(max-width: 1200px){#addpatron_button{left: 50%; transform: translateX(480px - $buttonwidth);}}
 @media(max-width: 992px){#addpatron_button{left: 50%; transform: translateX(380px - $buttonwidth);}}
@@ -95,8 +100,7 @@ $nicebluecolor: #4285f4;
   #navbar_username{margin-bottom: 10px;}
   #navbar_li{height: 75px;}
   #navbar_li a{height: 100%; position: absolute; left: 50%; transform: translateX(-50%);}
-  // .navbar-brand{position: absolute; left: 50%; transform: translateX(-50%);}
-  // #registration_li{width: 50%;}
+  li.single_menu_link{position: absolute; left: 0; top: 0;}
 }
 
 /* ==============================*/

@@ -77,6 +77,13 @@
 /*           GENERAL             */
 /*===============================*/
 /*--sassy --*/
+.btn-success {
+  background-color: #4285f4;
+  border: none; }
+
+.btn-success:hover {
+  background-color: #42a3f4; }
+
 #rpl_brand {
   height: 100%; }
 
@@ -96,6 +103,9 @@
   font-size: 20px;
   position: fixed;
   bottom: 20px; }
+
+#addpatron_button:hover {
+  background-color: #42a3f4; }
 
 @media (min-width: 1200px) {
   #addpatron_button {
@@ -170,7 +180,12 @@
     height: 100%;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); } }
+    transform: translateX(-50%); }
+
+  li.single_menu_link {
+    position: absolute;
+    left: 0;
+    top: 0; } }
 /* ==============================*/
 /*      Search Form Template     */
 /*===============================*/
